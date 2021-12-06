@@ -48,10 +48,14 @@ public class MainWindow extends JFrame {
         runBtn.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
-                //if(MouseInfo.getPointerInfo().getLocation().x)
+                if(MouseInfo.getPointerInfo().getLocation().x >= runBtn.getX() &&
+                        MouseInfo.getPointerInfo().getLocation().x <= runBtn.getX() + 20) {
+                    System.out.println("Weszlo");
+                    return;
+                }
 
-                int a = d.nextInt(windowWidth- 100);
-                int b = d.nextInt(windowHeight- 30);
+                int a = d.nextInt(getWidth()- 2 * runBtn.getWidth());
+                int b = d.nextInt(getHeight() - 2 *runBtn.getHeight());
                 runBtn.setLocation(a, b);
             }
         });
