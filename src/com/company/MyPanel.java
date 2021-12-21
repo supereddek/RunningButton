@@ -17,6 +17,8 @@ public class MyPanel extends JPanel implements KeyListener {
         setBackground(Color.ORANGE);
         setLayout(null);
         addKeyListener(this);
+        setFocusable(true);
+
 
         lblCoords = new JLabel("x, y");
         lblCoords.setBounds(10, 10, 60, 15);
@@ -34,7 +36,9 @@ public class MyPanel extends JPanel implements KeyListener {
     }
 
     public void addCircle() {
-        shapes.add(new Circle(MouseInfo.getPointerInfo().getLocation().getX(), MouseInfo.getPointerInfo().getLocation().getY()));
+        shapes.add(new Circle(MouseInfo.getPointerInfo().getLocation().getX(),
+                MouseInfo.getPointerInfo().getLocation().getY()));
+        System.out.println(this.shapes.size());
         repaint();
     }
 
@@ -45,6 +49,7 @@ public class MyPanel extends JPanel implements KeyListener {
 
     public void clear() {
         this.shapes.clear();
+        System.out.println(shapes.size());
         repaint();
     }
 
@@ -55,11 +60,7 @@ public class MyPanel extends JPanel implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        addCircle(100,100);
-        System.out.println("dzui");
-        if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-            System.out.println("Right key pressed");
-        }
+        addCircle();
 
     }
 

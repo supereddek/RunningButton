@@ -7,7 +7,8 @@ import java.awt.geom.Ellipse2D;
 
 public class Circle {
 
-    double x, y, width, height;
+    double x, y;
+    private final int radius = 20;
 
     public Circle(double x, double y) {
         this.x = x;
@@ -16,10 +17,8 @@ public class Circle {
 
     public void draw(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
-        Ellipse2D.Double circle = new Ellipse2D.Double(x, y, 10, 10);
-
-        g2d.setColor(Color.GRAY);
-        g2d.fill(circle);
+        g2d.fillOval((int)x - radius, (int)y - 2 *radius,
+                radius, radius);
     }
 
 }

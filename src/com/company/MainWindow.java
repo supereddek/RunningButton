@@ -15,8 +15,6 @@ public class MainWindow extends JFrame {
 	// write your code here
         MainWindow frame = new MainWindow("okno");
         frame.setVisible(true);
-
-
     }
 
     public MainWindow() throws HeadlessException {
@@ -41,10 +39,11 @@ public class MainWindow extends JFrame {
         contentPane.setLayout(null);
 
         MyPanel panel = new MyPanel();
-        panel.setBounds(10, 11, 569, 353);
+        panel.setBounds(10, 11, 570, 360);
         contentPane.add(panel);
         panel.requestFocus();
         contentPane.requestFocus();
+        this.requestFocusInWindow();
 
         JButton runBtn = new JButton("Click me!");
         runBtn.setBounds(windowWidth - 2 * 90, windowHeight - 4 * 23, 90, 23);
@@ -64,8 +63,12 @@ public class MainWindow extends JFrame {
                 }
 
                 int a = d.nextInt(getWidth()- 2 * runBtn.getWidth());
-                int b = d.nextInt(getHeight() - 2 *runBtn.getHeight());
-                runBtn.setLocation(a, b);
+                int b = d.nextInt(getHeight() - 2 *runBtn.getHeight() - panel.getHeight());
+                runBtn.setLocation(a, b + panel.getHeight());
+//                contentPane.setFocusable(false);
+//                panel.setFocusable(false);
+                System.out.println(contentPane.isFocusable());
+                System.out.println( panel.isFocusable());
             }
         });
 
@@ -75,6 +78,8 @@ public class MainWindow extends JFrame {
                 super.mouseClicked(e);
                 runBtn.setLocation(windowWidth - 2 * 90, windowHeight - 4 * 23);
                 panel.clear();
+                contentPane.setFocusable(true);
+                panel.requestFocus();
             }
         });
 
