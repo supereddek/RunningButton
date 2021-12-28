@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MyPanel extends JPanel implements KeyListener {
-    private final JLabel lblCoords;
+    private final JLabel lblCircle, lblSquare;
     private List<Object> shapes = new ArrayList<>();
     private int x, y;
 
@@ -20,9 +20,12 @@ public class MyPanel extends JPanel implements KeyListener {
         setFocusable(true);
 
 
-        lblCoords = new JLabel("x, y");
-        lblCoords.setBounds(10, 10, 60, 15);
-        add(lblCoords);
+        lblCircle = new JLabel("q - circle");
+        lblSquare = new JLabel("w - square");
+        lblCircle.setBounds(10, 10, 60, 15);
+        lblSquare.setBounds(10, 40, 60, 15);
+        add(lblSquare);
+        add(lblCircle);
         this.addMouseMotionListener(new MouseMotionAdapter() {
             @Override
             public void mouseMoved(MouseEvent e) {

@@ -1,13 +1,14 @@
 package com.company;
 
+import java.awt.*;
+
 public abstract class Shape {
     double x, y;
-    private double r;
-
     public Shape(double x, double y) {
+        super();
         this.x = x;
         this.y = y;
     }
 
-    public abstract void draw();
+    public abstract void draw(Graphics g);
 }

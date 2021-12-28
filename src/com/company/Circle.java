@@ -5,14 +5,12 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.Ellipse2D;
 
-public class Circle {
+public class Circle extends Shape {
 
-    double x, y;
     private final int r = 20;
 
     public Circle(double x, double y) {
-        this.x = x;
-        this.y = y;
+        super(x, y);
     }
 
     public void draw(Graphics g) {

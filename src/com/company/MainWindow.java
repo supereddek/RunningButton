@@ -2,24 +2,18 @@ package com.company;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.Random;
 
 public class MainWindow extends JFrame {
-    private Random d = new Random();
+    private final Random d = new Random();
 
     public static void main(String[] args) {
 	// write your code here
         MainWindow frame = new MainWindow("okno");
         frame.setVisible(true);
         frame.setAlwaysOnTop(true);
-    }
-
-    public MainWindow() throws HeadlessException {
-        this("untitled");
     }
 
     public MainWindow(String title) throws HeadlessException {
