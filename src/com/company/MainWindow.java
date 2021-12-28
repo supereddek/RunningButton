@@ -15,6 +15,7 @@ public class MainWindow extends JFrame {
 	// write your code here
         MainWindow frame = new MainWindow("okno");
         frame.setVisible(true);
+        frame.setAlwaysOnTop(true);
     }
 
     public MainWindow() throws HeadlessException {
@@ -65,10 +66,6 @@ public class MainWindow extends JFrame {
                 int a = d.nextInt(getWidth()- 2 * runBtn.getWidth());
                 int b = d.nextInt(getHeight() - 2 *runBtn.getHeight() - panel.getHeight());
                 runBtn.setLocation(a, b + panel.getHeight());
-//                contentPane.setFocusable(false);
-//                panel.setFocusable(false);
-                System.out.println(contentPane.isFocusable());
-                System.out.println( panel.isFocusable());
             }
         });
 

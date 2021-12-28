@@ -3,14 +3,14 @@ package com.company;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MyPanel extends JPanel implements KeyListener {
     private final JLabel lblCoords;
     private List<Object> shapes = new ArrayList<>();
+    private int x, y;
 
     public MyPanel() {
         setBorder(new LineBorder(new Color(0, 0, 0), 4, true));
@@ -23,6 +23,15 @@ public class MyPanel extends JPanel implements KeyListener {
         lblCoords = new JLabel("x, y");
         lblCoords.setBounds(10, 10, 60, 15);
         add(lblCoords);
+        this.addMouseMotionListener(new MouseMotionAdapter() {
+            @Override
+            public void mouseMoved(MouseEvent e) {
+                super.mouseMoved(e);
+                x = e.getX();
+                y = e.getY();
+            }
+        });
+
     }
 
     @Override
@@ -31,21 +40,24 @@ public class MyPanel extends JPanel implements KeyListener {
         for (Object s : shapes) {
             if (s instanceof Circle) {
                 ((Circle) s).draw(g);
+            } else if (s instanceof Square) {
+                ((Square) s).draw(g);
             }
         }
     }
 
     public void addCircle() {
-        shapes.add(new Circle(MouseInfo.getPointerInfo().getLocation().getX(),
-                MouseInfo.getPointerInfo().getLocation().getY()));
+        shapes.add(new Circle(this.x, this.y));
         System.out.println(this.shapes.size());
         repaint();
     }
 
-    public void addCircle(double x, double y) {
-        shapes.add(new Circle(x, y));
+    public void addSquare() {
+        shapes.add(new Square(this.x, this.y));
+        System.out.println(this.shapes.size());
         repaint();
     }
+
 
     public void clear() {
         this.shapes.clear();
@@ -60,7 +72,14 @@ public class MyPanel extends JPanel implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        addCircle();
+        switch (e.getKeyCode()) {
+            case KeyEvent.VK_Q:
+                addCircle();
+                break;
+            case KeyEvent.VK_W:
+                addSquare();
+                break;
+        }
 
     }
 
